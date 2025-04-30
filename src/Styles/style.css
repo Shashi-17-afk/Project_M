@@ -1,0 +1,170 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #0d1b2a;
+}
+
+header {
+  background: #778da9;
+  color: white;
+  padding: 10px;
+  text-align: center;
+}
+
+.categories{
+  background-color: white;
+  color: black;
+  width: 20%;
+  border-radius: 7px;
+  transition: 0.5s;
+}
+
+.categories:hover{
+  transform: translateY(-10px);
+  box-shadow: 3px 5px 5px rgb(200, 59, 59);
+}
+
+nav ul {
+  list-style: none;
+  padding: 0;
+  margin-right: -40px;
+}
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+nav ul li {
+  display: inline;
+  margin: 0 10px;
+  padding: 5px;
+}
+
+nav ul li a {
+  color: white;
+  text-decoration: none;
+}
+
+.hero {
+  text-align: center;
+  padding: 50px;
+  background: #f4f4f4;
+}
+
+.products {
+  padding: 20px;
+  text-align: center;
+}
+.product img{
+    height: 150px;
+    width: 200px;
+
+}
+
+.product-list {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding: 20px;
+}
+
+.product {
+    
+    width: 280px;
+    height: 340px;
+    background: white;
+    border-radius: 15px;
+    padding: 20px;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.4s ease-in-out;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    border: 2px solid transparent;
+}
+
+.product:hover{
+    transform: scale(1.05);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+
+}
+
+footer {
+  text-align: center;
+  padding: 10px;
+  background: #333;
+  color: white;
+}
+
+.discount{
+  color: red;
+}
+
+.contentss ul li {
+  list-style: none;
+  display: inline-block;
+  margin: 10px;
+  padding: 5px;
+}
+
+.contentss ul li{
+  text-decoration: none;
+  color: white; 
+  transition: color 0.03s ease;
+}
+
+.contentss ul li:hover a {
+  color: black;
+  transform: translate(40px, 0px);
+  transition: 0.5s;
+}
+
+
+footer{
+  display: grid;
+  grid-template-columns: 3fr 3fr 3fr 3fr;
+  margin-top: 10px;
+  padding: 5px;           
+  background-color: black;
+  color: white;
+  font-family: Arial;
+  font-size: 15px;
+  margin-top: 170px;
+}
+  
+.nihaal{
+margin-top: 35px;
+}
+  
+.shopper{
+font-size: 35px;
+}
+  
+.details~span{
+color: black;
+margin-top: 15px;
+display: block;
+}
+
+span{
+  cursor: pointer;
+}
+
+@media screen and (orientation: portrait)  {
+  .contentss{
+    display: flex;
+    margin-right: 20px;
+    margin-top: 30px;
+  }
+
+  .loginnn{
+    display: none;
+  }
+
+  .cartss{
+    display: none;
+  }
+
+}
