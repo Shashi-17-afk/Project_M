@@ -1,0 +1,279 @@
+/* Settings Page Styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Header */
+.settings-header {
+    background: #333;
+    color: white;
+    padding: 15px 0;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.navbar {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav-left .logo {
+    margin: 0;
+    font-size: 24px;
+}
+
+.nav-right .nav-link {
+    color: white;
+    text-decoration: none;
+    padding: 8px 15px;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.nav-right .nav-link:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Settings Container */
+.settings-container {
+    flex: 1;
+    max-width: 900px;
+    margin: 40px auto;
+    padding: 0 20px;
+}
+
+.settings-wrapper {
+    background: white;
+    border-radius: 12px;
+    padding: 30px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.settings-title {
+    font-size: 28px;
+    font-weight: 700;
+    color: #333;
+    margin-bottom: 30px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.settings-title i {
+    color: #007bff;
+}
+
+/* Settings Section */
+.settings-section {
+    margin-bottom: 30px;
+}
+
+.section-title {
+    font-size: 20px;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.section-title i {
+    color: #007bff;
+    font-size: 18px;
+}
+
+.settings-card {
+    background: #f8f9fa;
+    border-radius: 8px;
+    padding: 20px;
+    border: 1px solid #e0e0e0;
+}
+
+.setting-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 0;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.setting-item:last-child {
+    border-bottom: none;
+}
+
+.setting-info {
+    flex: 1;
+    margin-right: 20px;
+}
+
+.setting-label {
+    display: block;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 5px;
+    font-size: 16px;
+}
+
+.setting-description {
+    font-size: 13px;
+    color: #666;
+    margin: 0;
+}
+
+.setting-control {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.setting-control .form-control {
+    min-width: 200px;
+}
+
+.setting-control .form-select {
+    min-width: 150px;
+}
+
+.provider-badge {
+    padding: 6px 12px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.form-check-input {
+    width: 50px;
+    height: 25px;
+    cursor: pointer;
+}
+
+/* Settings Actions */
+.settings-actions {
+    margin-top: 40px;
+    text-align: center;
+    padding-top: 20px;
+    border-top: 2px solid #e0e0e0;
+}
+
+.settings-actions .btn {
+    min-width: 200px;
+    padding: 12px 30px;
+}
+
+/* Footer */
+.settings-footer {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    margin-top: 50px;
+    padding: 30px 20px;
+    background-color: black;
+    color: white;
+    font-family: Arial;
+    font-size: 15px;
+    gap: 20px;
+}
+
+.shopper {
+    font-size: 35px;
+    margin-bottom: 15px;
+}
+
+.shashi {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    margin-top: 15px;
+    flex-wrap: wrap;
+}
+
+.shashi span {
+    font-size: 1.5rem;
+    color: #ccc;
+    transition: transform 0.3s ease, color 0.3s ease;
+    cursor: pointer;
+}
+
+.shashi span:hover {
+    transform: scale(1.2);
+    color: #007bff;
+}
+
+.details {
+    font-weight: bold;
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+.details ~ span {
+    color: gray;
+    margin-top: 15px;
+    display: block;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .settings-container {
+        margin: 20px auto;
+        padding: 0 15px;
+    }
+
+    .settings-wrapper {
+        padding: 20px;
+    }
+
+    .setting-item {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
+    }
+
+    .setting-control {
+        width: 100%;
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .setting-control .form-control,
+    .setting-control .form-select {
+        width: 100%;
+        min-width: auto;
+    }
+
+    .settings-footer {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+
+    .settings-title {
+        font-size: 24px;
+    }
+}
+
+@media (max-width: 480px) {
+    .settings-wrapper {
+        padding: 15px;
+    }
+
+    .settings-title {
+        font-size: 20px;
+    }
+
+    .section-title {
+        font-size: 18px;
+    }
+}

@@ -1,0 +1,752 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Details - TechVault</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pN6jIeHz" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="../Styles/theme.css">
+    
+    <style type="text/css">
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        section{
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            padding: 20px;
+            gap: 20px;
+        }
+
+        footer{
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            margin-top: 10px;
+            padding: 20px;           
+            background-color: black;
+            color: white;
+            font-family: Arial;
+            font-size: 15px;
+            margin-top: 170px;
+            gap: 20px;
+        }
+            
+        .nihaal{
+        margin-top: 35px;
+        }
+            
+        .shopper{
+        font-size: 35px;
+        margin-bottom: 15px;
+        }
+
+        .shashi {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            margin-top: 15px;
+            flex-wrap: wrap;
+        }
+
+        .shashi span {
+            font-size: 1.5rem;
+            color: #ccc;
+            transition: transform 0.3s ease, color 0.3s ease;
+            cursor: pointer;
+        }
+
+        .shashi span:hover {
+            transform: scale(1.2);
+            color: #007bff;
+        }
+            
+        .details~span{
+        color: gray;
+        margin-top: 15px;
+        display: block;
+        }
+
+        section img{
+            height: 400px;
+            width: 600px;
+            max-width: 100%;
+            margin-top: 50px;
+            object-fit: contain;
+        }
+
+        main img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        dd{
+            display: flex;
+            flex-direction: column;
+        }
+
+        header {
+            background: #778da9;
+            color: white;
+            padding: 10px;
+            text-align: center;
+        }
+        .categories{
+        background-color: white;
+        color: black;
+        width: 20%;
+        border-radius: 7px;
+        transition: 0.5s;
+        }
+
+        .categories:hover{
+        transform: translateY(-10px);
+        box-shadow: 3px 5px 5px rgb(200, 59, 59);
+        }
+
+        nav ul {
+        list-style: none;
+        padding: 0;
+        margin-right: -40px;
+        }
+
+        nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        position: relative;
+        }
+
+        nav h1 {
+            margin: 0;
+            font-size: 1.5rem;
+        }
+
+        nav ul li {
+        display: inline;
+        margin: 0 10px;
+        padding: 5px;
+        }
+
+        nav ul li a {
+        color: white;
+        text-decoration: none;
+        }
+
+        .mobile-menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+            padding: 5px 10px;
+            z-index: 1000;
+        }
+
+        .mobile-menu-toggle i {
+            font-size: 1.8rem;
+        }
+
+        .contentss{
+            margin-right: 50px;
+        }
+
+        .contentss ul li {
+        list-style: none;
+        display: inline-block;
+        margin: 10px;
+        padding: 5px;
+        }
+
+        .contentss ul li{
+        text-decoration: none;
+        color: white; 
+        transition: color 0.03s ease;
+        }
+
+        .contentss ul li:hover a {
+        color: black;
+        transform: translate(40px, 0px);
+        transition: 0.5s;
+        }
+
+        .searchbar {
+            margin-left: 100px;
+            height: 35px;
+            width: 40%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            }
+
+        #searchInput {
+            height: 100%;
+            width: 80%;
+            margin-left: -140px;
+            display: flex;
+            justify-content: center;
+            text-align: center;
+            border: 1px transparent;
+            border-top-left-radius: 7px;
+            border-bottom-left-radius: 7px;
+            padding: 0 10px;
+            box-sizing: border-box;
+            }
+
+        #searchIcon {
+            height: 100%;
+            width: 30px;
+            border-top-right-radius: 7px;
+            border-bottom-right-radius: 7px;
+            background-color: rgb(73, 73, 241);
+            padding: 3px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            }
+
+        .product-detail-section {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            padding: 40px 20px;
+            gap: 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+            align-items: flex-start;
+        }
+
+        .product-image-container {
+            flex: 1;
+            min-width: 300px;
+            max-width: 600px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #f8f9fa;
+            border-radius: 12px;
+            padding: 20px;
+        }
+
+        .product-main-image {
+            width: 100%;
+            max-width: 600px;
+            height: auto;
+            max-height: 500px;
+            object-fit: contain;
+            border-radius: 8px;
+        }
+
+        .product-details {
+            flex: 1;
+            min-width: 300px;
+            max-width: 500px;
+            padding: 20px 0;
+        }
+
+        .product-name {
+            font-size: 32px;
+            font-weight: 700;
+            color: #333;
+            margin-bottom: 20px;
+            line-height: 1.3;
+        }
+
+        .product-description {
+            font-size: 16px;
+            line-height: 1.6;
+            color: #555;
+            margin-bottom: 20px;
+        }
+
+        .store-link {
+            display: inline-block;
+            color: #007bff;
+            text-decoration: none;
+            font-size: 16px;
+            margin-bottom: 15px;
+            transition: color 0.3s;
+        }
+
+        .store-link:hover {
+            color: #0056b3;
+            text-decoration: underline;
+        }
+
+        .rating-section {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .rating-value {
+            font-size: 18px;
+            font-weight: 600;
+            color: #333;
+        }
+
+        .rating-stars {
+            color: goldenrod;
+            font-size: 18px;
+        }
+
+        .divider {
+            margin: 25px 0;
+            border: none;
+            border-top: 1px solid #e0e0e0;
+        }
+
+        .price-section {
+            margin-bottom: 25px;
+        }
+
+        .discount-badge {
+            display: inline-block;
+            background: #ff6b6b;
+            color: white;
+            padding: 6px 14px;
+            border-radius: 6px;
+            font-size: 14px;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .price-container {
+            display: flex;
+            align-items: baseline;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin-top: 10px;
+        }
+
+        .original-price {
+            color: #999;
+            text-decoration: line-through;
+            font-size: 20px;
+        }
+
+        .current-price {
+            color: #007bff;
+            font-size: 36px;
+            font-weight: 700;
+        }
+
+        .button-group {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin: 25px 0;
+        }
+
+        .buy-now-btn, .add-cart-btn {
+            width: 100%;
+            max-width: 400px;
+            padding: 14px 20px;
+            font-size: 16px;
+            font-weight: 600;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .buy-now-btn:hover, .add-cart-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .payment-info {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+
+        .payment-info p {
+            margin: 0;
+            color: #555;
+            font-size: 14px;
+            line-height: 1.8;
+        }
+
+        .specifications {
+            margin-top: 30px;
+        }
+
+        .specs-title {
+            font-size: 24px;
+            font-weight: 700;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        .specs-list {
+            display: grid;
+            gap: 15px;
+        }
+
+        .spec-key {
+            font-weight: 700;
+            color: #555;
+            font-size: 16px;
+            margin-bottom: 5px;
+        }
+
+        .spec-value {
+            color: #777;
+            font-size: 15px;
+            margin-left: 0;
+            margin-bottom: 15px;
+        }
+
+        .product-details p {
+            max-width: 100%;
+        }
+
+        /* Responsive Design */
+        @media screen and (max-width: 1024px) {
+            .product-detail-section {
+                justify-content: center;
+                padding: 30px 20px;
+            }
+            
+            .product-image-container {
+                max-width: 100%;
+            }
+
+            .product-main-image {
+                max-width: 100%;
+            }
+
+            .product-details {
+                max-width: 100%;
+            }
+
+            footer {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media screen and (max-width: 768px) {
+            nav {
+                flex-wrap: wrap;
+                padding: 10px;
+            }
+            
+            nav h1 {
+                font-size: 1.3rem;
+                flex: 1;
+            }
+            
+            .mobile-menu-toggle {
+                display: block;
+                order: 2;
+            }
+            
+            .searchbar {
+                order: 3;
+                width: 100%;
+                margin: 10px 0;
+                margin-left: 0 !important;
+            }
+
+            #searchInput {
+                width: calc(100% - 40px);
+                margin-left: 0;
+                text-align: left;
+                padding-left: 15px;
+            }
+
+            #searchIcon {
+                width: 40px;
+                flex-shrink: 0;
+            }
+            
+            .contentss {
+                order: 4;
+                width: 100%;
+                display: none;
+                margin-right: 0;
+            }
+            
+            .contentss.active {
+                display: block;
+            }
+            
+            .contentss ul {
+                flex-direction: column;
+                margin: 0;
+                padding: 0;
+            }
+            
+            .contentss ul li {
+                display: block;
+                margin: 5px 0;
+                text-align: center;
+            }
+            
+            .contentss ul li:hover a {
+                transform: none;
+            }
+
+            .product-detail-section {
+                flex-direction: column;
+                align-items: center;
+                padding: 20px 15px;
+                gap: 25px;
+            }
+
+            .product-image-container {
+                width: 100%;
+                max-width: 100%;
+            }
+
+            .product-main-image {
+                width: 100%;
+                max-width: 100%;
+            }
+
+            .product-details {
+                width: 100%;
+                max-width: 100%;
+                text-align: center;
+            }
+
+            .product-name {
+                font-size: 24px;
+            }
+
+            .product-description {
+                font-size: 15px;
+            }
+
+            .current-price {
+                font-size: 28px;
+            }
+
+            .buy-now-btn, .add-cart-btn {
+                max-width: 100%;
+            }
+
+            footer {
+                grid-template-columns: 1fr;
+                text-align: center;
+                padding: 20px 15px;
+                margin-top: 50px;
+            }
+
+            .shopper {
+                font-size: 28px;
+            }
+
+            main {
+                display: block;
+            }
+        }
+
+        @media screen and (max-width: 480px) {
+            nav h1 {
+                font-size: 1.1rem;
+            }
+
+            .product-detail-section {
+                padding: 15px 10px;
+            }
+
+            .product-name {
+                font-size: 20px;
+            }
+
+            .product-description {
+                font-size: 14px;
+            }
+
+            .current-price {
+                font-size: 24px;
+            }
+
+            .original-price {
+                font-size: 16px;
+            }
+
+            .buy-now-btn, .add-cart-btn {
+                font-size: 14px;
+                padding: 12px;
+            }
+
+            footer {
+                padding: 15px 10px;
+                font-size: 14px;
+            }
+
+            .shopper {
+                font-size: 24px;
+            }
+
+            .details {
+                font-size: 1rem !important;
+            }
+
+            dl {
+                font-size: 0.9rem;
+            }
+
+            dt {
+                font-size: 0.95rem;
+            }
+
+            dd {
+                font-size: 0.85rem;
+            }
+        }
+
+        @media screen and (max-width: 320px) {
+            nav h1 {
+                font-size: 1rem;
+            }
+
+            .product-details p {
+                font-size: 0.9rem !important;
+            }
+
+            .btn {
+                font-size: 0.85rem !important;
+            }
+        }
+
+    </style>
+</head>
+<body>
+
+    <header>
+        <nav>
+          <h1 style="font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif; color: rgb(48, 48, 88);" >TechVault</h1>
+          <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Toggle menu">
+            <i class="bi bi-list"></i>
+          </button>
+          <div class="searchbar">
+            <input type="text" id="searchInput" placeholder="search products" />
+            <i class="bi bi-search" id="searchIcon"></i>
+          </div>
+
+          <button class="theme-toggle-btn" id="themeToggleBtn" aria-label="Change theme" style="margin-right: 15px;">
+            <i class="bi bi-palette" id="themeIcon"></i>
+          </button>
+  
+           <div class="contentss" id="mobileMenu">
+             <ul>
+                <li><a href="../../index.html">Home</a></li>
+                <li><a href="products.html">Products</a></li>
+                <li><a href="carts.html">Cart</a></li>
+             </ul>
+           </div>
+        </nav>
+  
+      </header>
+
+    <div id="product-detail-root">
+        <!-- Product details will be rendered here by React -->
+        <div style="text-align: center; padding: 50px;">
+            <p>Loading product details...</p>
+        </div>
+    </div>
+
+    <footer>
+        <div>
+          <div class="shopper">
+            TechVault
+          </div>
+        
+        <div class="shashi">
+            <span class="bi bi-facebook"></span>
+            <span class="bi bi-instagram"></span>
+            <span class="bi bi-twitter"></span>
+            <span class="bi bi-youtube"></span>
+            <span class="bi bi-github"></span>
+        </div>
+    </div>
+    
+    
+    <div>
+        <div class="details fw-bold fs-5">
+            SUPPORT
+        </div>
+    
+            <span>Contact us</span>
+            <span>FAQs</span>
+            <span>Size Guide</span>
+            <span>Shipping and Returns</span>
+    </div>
+    
+    
+    <div>
+        <div class="details fw-bold fs-5">
+            SHOP
+        </div>
+            <span>Mobile</span>
+            <span>Smart Watches</span>
+            <span>Televisiom</span>
+            <span>Speakers</span>
+            <span>Discounts</span>
+    </div>
+    
+    
+    <div>
+        <div class="details fw-bold fs-5">
+            COMPANY
+        </div>
+    
+            <span>Our story</span>
+            <span>Careers</span>
+            <span>Terms and Conditions</span>
+            <span>Privacy & Cookie policy</span>
+    </div>
+      </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <!-- React and ReactDOM -->
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script>
+      // Mobile menu toggle functionality
+      document.addEventListener('DOMContentLoaded', function() {
+        const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+        const mobileMenu = document.getElementById('mobileMenu');
+        
+        if (mobileMenuToggle && mobileMenu) {
+          mobileMenuToggle.addEventListener('click', function() {
+            mobileMenu.classList.toggle('active');
+            const icon = mobileMenuToggle.querySelector('i');
+            if (mobileMenu.classList.contains('active')) {
+              icon.classList.remove('bi-list');
+              icon.classList.add('bi-x-lg');
+            } else {
+              icon.classList.remove('bi-x-lg');
+              icon.classList.add('bi-list');
+            }
+          });
+          
+          const menuLinks = mobileMenu.querySelectorAll('a');
+          menuLinks.forEach(link => {
+            link.addEventListener('click', function() {
+              mobileMenu.classList.remove('active');
+              const icon = mobileMenuToggle.querySelector('i');
+              icon.classList.remove('bi-x-lg');
+              icon.classList.add('bi-list');
+            });
+          });
+        }
+      });
+    </script>
+    <script src="../Scripts/theme.js"></script>
+    <script src="../Scripts/product-detail-react.js"></script>
+</body>
+</html>

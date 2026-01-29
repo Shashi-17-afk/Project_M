@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Settings - TechVault</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="../Styles/settings.css">
+    <link rel="stylesheet" href="../Styles/theme.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="settings-header">
+        <nav class="navbar">
+            <div class="nav-left">
+                <h1 class="logo">
+                    <a href="../../index.html" style="text-decoration: none; color: rgb(48, 48, 88); font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;">
+                        TechVault
+                    </a>
+                </h1>
+            </div>
+            <div class="nav-right">
+                <button class="theme-toggle-btn" id="themeToggleBtn" aria-label="Change theme" style="margin-right: 15px;">
+                    <i class="bi bi-palette" id="themeIcon"></i>
+                </button>
+                <a href="../../index.html" class="nav-link">
+                    <i class="bi bi-house"></i> Home
+                </a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Settings Container -->
+    <div class="settings-container">
+        <div class="settings-wrapper">
+            <h2 class="settings-title">
+                <i class="bi bi-gear"></i> Settings
+            </h2>
+
+            <!-- Account Settings -->
+            <div class="settings-section">
+                <h3 class="section-title">
+                    <i class="bi bi-person"></i> Account Settings
+                </h3>
+                <div class="settings-card">
+                    <div class="setting-item">
+                        <div class="setting-info">
+                            <label class="setting-label">Username</label>
+                            <p class="setting-description">Your display name</p>
+                        </div>
+                        <div class="setting-control">
+                            <input type="text" id="usernameInput" class="form-control" placeholder="Enter username">
+                            <button class="btn btn-primary btn-sm" id="saveUsername">Save</button>
+                        </div>
+                    </div>
+
+                    <div class="setting-item">
+                        <div class="setting-info">
+                            <label class="setting-label">Email</label>
+                            <p class="setting-description">Your email address</p>
+                        </div>
+                        <div class="setting-control">
+                            <input type="email" id="emailInput" class="form-control" placeholder="Enter email">
+                            <button class="btn btn-primary btn-sm" id="saveEmail">Save</button>
+                        </div>
+                    </div>
+
+                    <div class="setting-item">
+                        <div class="setting-info">
+                            <label class="setting-label">Login Provider</label>
+                            <p class="setting-description">How you logged in</p>
+                        </div>
+                        <div class="setting-control">
+                            <span class="provider-badge" id="providerBadge">Regular Account</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Preferences -->
+            <div class="settings-section">
+                <h3 class="section-title">
+                    <i class="bi bi-sliders"></i> Preferences
+                </h3>
+                <div class="settings-card">
+                    <div class="setting-item">
+                        <div class="setting-info">
+                            <label class="setting-label">Email Notifications</label>
+                            <p class="setting-description">Receive email updates about your orders</p>
+                        </div>
+                        <div class="setting-control">
+                            <div class="form-check form-switch">
+                                <input class="form-check-input" type="checkbox" id="emailNotifications" checked>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="setting-item">
+                        <div class="setting-info">
+                            <label class="setting-label">SMS Notifications</label>
+                            <p class="setting-description">Receive SMS updates about your orders</p>
+                        </div>
+                        <div class="setting-control">
+                            <div class="form-check form-switch">
+                                <input class="form-check-input" type="checkbox" id="smsNotifications">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="setting-item">
+                        <div class="setting-info">
+                            <label class="setting-label">Newsletter</label>
+                            <p class="setting-description">Subscribe to our newsletter for deals and updates</p>
+                        </div>
+                        <div class="setting-control">
+                            <div class="form-check form-switch">
+                                <input class="form-check-input" type="checkbox" id="newsletter" checked>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Privacy & Security -->
+            <div class="settings-section">
+                <h3 class="section-title">
+                    <i class="bi bi-shield-lock"></i> Privacy & Security
+                </h3>
+                <div class="settings-card">
+                    <div class="setting-item">
+                        <div class="setting-info">
+                            <label class="setting-label">Profile Visibility</label>
+                            <p class="setting-description">Control who can see your profile</p>
+                        </div>
+                        <div class="setting-control">
+                            <select class="form-select" id="profileVisibility">
+                                <option value="public">Public</option>
+                                <option value="private">Private</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="setting-item">
+                        <div class="setting-info">
+                            <label class="setting-label">Data Sharing</label>
+                            <p class="setting-description">Allow data sharing for better experience</p>
+                        </div>
+                        <div class="setting-control">
+                            <div class="form-check form-switch">
+                                <input class="form-check-input" type="checkbox" id="dataSharing" checked>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Actions -->
+            <div class="settings-section">
+                <h3 class="section-title">
+                    <i class="bi bi-exclamation-triangle"></i> Account Actions
+                </h3>
+                <div class="settings-card">
+                    <div class="setting-item">
+                        <div class="setting-info">
+                            <label class="setting-label">Clear Cart</label>
+                            <p class="setting-description">Remove all items from your shopping cart</p>
+                        </div>
+                        <div class="setting-control">
+                            <button class="btn btn-warning btn-sm" id="clearCartBtn">Clear Cart</button>
+                        </div>
+                    </div>
+
+                    <div class="setting-item">
+                        <div class="setting-info">
+                            <label class="setting-label">Delete Account</label>
+                            <p class="setting-description">Permanently delete your account and all data</p>
+                        </div>
+                        <div class="setting-control">
+                            <button class="btn btn-danger btn-sm" id="deleteAccountBtn">Delete Account</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Save All Button -->
+            <div class="settings-actions">
+                <button class="btn btn-primary btn-lg" id="saveAllBtn">
+                    <i class="bi bi-check-circle"></i> Save All Changes
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="settings-footer">
+        <div>
+            <div class="shopper">TechVault</div>
+            <div class="shashi">
+                <span class="bi bi-facebook"></span>
+                <span class="bi bi-instagram"></span>
+                <span class="bi bi-twitter"></span>
+                <span class="bi bi-youtube"></span>
+                <span class="bi bi-github"></span>
+            </div>
+        </div>
+        <div>
+            <div class="details fw-bold fs-5">SUPPORT</div>
+            <span>Contact us</span>
+            <span>FAQs</span>
+            <span>Size Guide</span>
+            <span>Shipping and Returns</span>
+        </div>
+        <div>
+            <div class="details fw-bold fs-5">SHOP</div>
+            <span>Mobile</span>
+            <span>Smart Watches</span>
+            <span>Television</span>
+            <span>Speakers</span>
+            <span>Discounts</span>
+        </div>
+        <div>
+            <div class="details fw-bold fs-5">COMPANY</div>
+            <span>Our story</span>
+            <span>Careers</span>
+            <span>Terms and Conditions</span>
+            <span>Privacy & Cookie policy</span>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script src="../Scripts/theme.js"></script>
+    <script src="../Scripts/settings.js"></script>
+</body>
+</html>

@@ -70,11 +70,51 @@ button:hover::before {
 
 .form-container {
   width: 320px;
+  max-width: 90%;
   border-radius: 0.75rem;
   background-color: rgb(22, 34, 59);
   padding: 2rem;
   color: rgba(243, 244, 246, 1);
   margin: 10% auto;
+}
+
+/* Responsive Login Modal */
+@media screen and (max-width: 768px) {
+  .form-container {
+    width: 90%;
+    max-width: 400px;
+    padding: 1.5rem;
+    margin: 15% auto;
+  }
+  
+  .title {
+    font-size: 1.3rem;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .form-container {
+    width: 95%;
+    padding: 1.2rem;
+    margin: 20% auto;
+  }
+  
+  .title {
+    font-size: 1.2rem;
+  }
+  
+  .input-group {
+    font-size: 0.8rem;
+  }
+  
+  .input-group input {
+    padding: 0.6rem 0.8rem;
+  }
+  
+  .sign {
+    padding: 0.6rem;
+    font-size: 0.9rem;
+  }
 }
 
 .title {
@@ -198,33 +238,169 @@ button:hover::before {
   display: inline-block;
 }
 
-.tooltip {
-  display: none;
-  position: absolute;
-  top: 100%;
-  left: 50%;
-  transform: translateX(-50%);
-  background-color: rgba(17, 24, 39, 1);
-  color: rgba(243, 244, 246, 1);
-  padding: 5px;
-  border-radius: 5px;
-  z-index: 1;
-}
-
-.profileContainer:hover .tooltip {
-  display: block;
-}
-
-#logoutBtn {
-  background: none;
-  border: none;
-  color: rgba(243, 244, 246, 1);
-  cursor: pointer;
-}
-
 #profileIcon {
   color: rgb(254, 254, 254);
   font-size: 20px;
   font-family: sans-serif;
   cursor: pointer;
+  transition: all 0.3s ease;
+  padding: 5px;
+  border-radius: 50%;
+}
+
+#profileIcon:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  transform: scale(1.1);
+}
+
+.profile-dropdown {
+  display: none;
+  position: absolute;
+  top: 100%;
+  right: 0;
+  margin-top: 10px;
+  background-color: rgba(17, 24, 39, 1);
+  border: 1px solid rgba(55, 65, 81, 1);
+  border-radius: 8px;
+  min-width: 250px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  z-index: 1000;
+  overflow: hidden;
+}
+
+.profile-dropdown.active {
+  display: block;
+}
+
+.profile-header {
+  padding: 15px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background-color: rgba(31, 41, 55, 1);
+}
+
+.profile-header i {
+  font-size: 40px;
+  color: rgba(167, 139, 250, 1);
+}
+
+.profile-info {
+  flex: 1;
+}
+
+.profile-username {
+  font-weight: 600;
+  font-size: 16px;
+  color: rgba(243, 244, 246, 1);
+  margin-bottom: 4px;
+}
+
+.profile-email {
+  font-size: 13px;
+  color: rgba(156, 163, 175, 1);
+  margin-bottom: 4px;
+}
+
+.profile-provider {
+  font-size: 11px;
+  color: rgba(167, 139, 250, 1);
+  font-style: italic;
+}
+
+.profile-divider {
+  height: 1px;
+  background-color: rgba(55, 65, 81, 1);
+  margin: 8px 0;
+}
+
+.profile-menu {
+  padding: 8px 0;
+}
+
+.profile-menu-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 15px;
+  color: rgba(243, 244, 246, 1);
+  text-decoration: none;
+  transition: background-color 0.2s ease;
+  cursor: pointer;
+}
+
+.profile-menu-item:hover {
+  background-color: rgba(31, 41, 55, 1);
+}
+
+.profile-menu-item i {
+  font-size: 18px;
+  width: 20px;
+  text-align: center;
+}
+
+.profile-menu-item span {
+  font-size: 14px;
+}
+
+.profile-logout-btn {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 15px;
+  background: none;
+  border: none;
+  color: rgba(239, 68, 68, 1);
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  text-align: left;
+  font-size: 14px;
+}
+
+.profile-logout-btn:hover {
+  background-color: rgba(239, 68, 68, 0.1);
+}
+
+.profile-logout-btn i {
+  font-size: 18px;
+  width: 20px;
+  text-align: center;
+}
+
+/* Responsive */
+@media screen and (max-width: 768px) {
+  .profile-dropdown {
+    right: -10px;
+    min-width: 220px;
+  }
+}
+
+.social-login-btn {
+  font-size: 24px;
+  color: rgba(243, 244, 246, 1);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  padding: 8px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.social-login-btn:hover {
+  transform: scale(1.2);
+  background-color: rgba(55, 65, 81, 0.5);
+}
+
+#googleLogin:hover {
+  color: #4285F4;
+}
+
+#facebookLogin:hover {
+  color: #1877F2;
+}
+
+#twitterLogin:hover {
+  color: #1DA1F2;
 }

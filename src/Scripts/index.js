@@ -13,9 +13,10 @@ function addToCart(event) {
   const product = event.target.closest(".product");
   const productId = product.getAttribute("data-id");
 
-  const productName = product.querySelector("h3") ;
+  const productNameElement = product.querySelector("h3");
+  const productName = productNameElement ? productNameElement.textContent.trim() : "Product";
   const productPrice = parseFloat(
-    product.querySelector(".text-primary").innerText.replace("$", "")
+    product.querySelector(".text-primary").innerText.replace("$", "").replace(",", "")
   );
 
   const productImage = product.querySelector("img").src;
@@ -37,6 +38,18 @@ function addToCart(event) {
 
   localStorage.setItem("cart", JSON.stringify(cart));
   loadCartFromStorage(); // 🔄 Updates cart display
+  
+  // Show confirmation
+  const btn = event.target;
+  const originalText = btn.textContent;
+  btn.textContent = "Added!";
+  btn.style.backgroundColor = "#28a745";
+  btn.style.color = "white";
+  setTimeout(() => {
+    btn.textContent = originalText;
+    btn.style.backgroundColor = "";
+    btn.style.color = "";
+  }, 1000);
 }
 
 function removeFromCart(productId) {
