@@ -61,8 +61,8 @@
                      <i class="bi bi-person"></i>
                      <span>View Profile</span>
                    </a>
-                   <a href="src/Html/carts.html" class="profile-menu-item">
-                     <i class="bi bi-cart"></i>
+                   <a href="src/Html/orders.html" class="profile-menu-item">
+                     <i class="bi bi-box-seam"></i>
                      <span>My Orders</span>
                    </a>
                    <a href="#" class="profile-menu-item" id="settingsBtn">
@@ -150,29 +150,57 @@
       </nav>
       
 
-    <h4 class="browsee text-center text-white" style="margin-top: 30px;">Browse Categories</h4>
+    <section class="browse-categories-section">
+      <div class="browse-categories-container">
+        <h2 class="browse-categories-title">
+          <i class="bi bi-grid-3x3-gap-fill"></i>
+          Browse Categories
+        </h2>
+        <p class="browse-categories-subtitle">Shop by category and find what you need</p>
 
-    <section class="Browse text-center mb-3">
-        <div class="categories">
-            <span class="bi bi-phone-fill fs-1 text-dark"></span>
-            <p>Smartphones</p>
-            <p>Get latest Smartphones</p>
+        <div class="browse-categories-grid">
+          <a href="src/Html/products.html" class="category-card">
+            <div class="category-card-icon-wrap">
+              <i class="bi bi-phone-fill"></i>
+            </div>
+            <h3 class="category-card-title">Smartphones</h3>
+            <p class="category-card-desc">Latest phones & accessories</p>
+            <span class="category-card-arrow"><i class="bi bi-arrow-right"></i></span>
+          </a>
+          <a href="src/Html/products.html" class="category-card">
+            <div class="category-card-icon-wrap">
+              <i class="bi bi-laptop"></i>
+            </div>
+            <h3 class="category-card-title">Laptops</h3>
+            <p class="category-card-desc">Powerful laptops for work & play</p>
+            <span class="category-card-arrow"><i class="bi bi-arrow-right"></i></span>
+          </a>
+          <a href="src/Html/products.html" class="category-card">
+            <div class="category-card-icon-wrap">
+              <i class="bi bi-smartwatch"></i>
+            </div>
+            <h3 class="category-card-title">Watches</h3>
+            <p class="category-card-desc">Smartwatches & wearables</p>
+            <span class="category-card-arrow"><i class="bi bi-arrow-right"></i></span>
+          </a>
+          <a href="src/Html/products.html" class="category-card">
+            <div class="category-card-icon-wrap">
+              <i class="bi bi-headphones"></i>
+            </div>
+            <h3 class="category-card-title">Audio</h3>
+            <p class="category-card-desc">Headphones & earbuds</p>
+            <span class="category-card-arrow"><i class="bi bi-arrow-right"></i></span>
+          </a>
+          <a href="src/Html/products.html" class="category-card">
+            <div class="category-card-icon-wrap">
+              <i class="bi bi-speaker-fill"></i>
+            </div>
+            <h3 class="category-card-title">Speakers</h3>
+            <p class="category-card-desc">Premium sound systems</p>
+            <span class="category-card-arrow"><i class="bi bi-arrow-right"></i></span>
+          </a>
         </div>
-        <div class="categories">
-            <span class="bi bi-smartwatch fs-1 text-dark"></span>
-            <p>Watches</p>
-            <p>Exclusive watches, crafted for u</p>
-        </div>
-        <div class="categories">
-            <span class="bi bi-tv-fill fs-1 text-dark"></span>
-            <p>Television</p>
-            <p>Experience Entertainment</p>
-        </div>
-        <div class="categories">
-            <span class="bi bi-speaker-fill fs-1 text-dark"></span>
-            <p>Speakers</p>
-            <p>Best quality speakers</p>
-        </div>
+      </div>
     </section>
 
   </nav>
@@ -182,57 +210,60 @@
 
     </main>
 
-    <footer class="bg-white text-black">
-              <div>
-                <div class="shopper">
-                  TechVault
-                </div>
-              
-              <div class="shashi">
-                  <span class="bi bi-facebook"></span>
-                  <span class="bi bi-instagram"></span>
-                  <span class="bi bi-twitter"></span>
-                  <span class="bi bi-youtube"></span>
-                  <span class="bi bi-github"></span>
-                  <span class="bi bi-telegram"></span>
-              </div>
+    <footer class="site-footer">
+      <div class="footer-accent"></div>
+      <div class="footer-container">
+        <div class="footer-grid">
+          <div class="footer-col footer-brand">
+            <a href="index.html" class="footer-logo">
+              <i class="bi bi-box-seam"></i>
+              TechVault
+            </a>
+            <p class="footer-tagline">Your one-stop shop for tech and electronics.</p>
+            <div class="footer-social">
+              <a href="#" class="footer-social-link" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+              <a href="#" class="footer-social-link" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+              <a href="#" class="footer-social-link" aria-label="Twitter"><i class="bi bi-twitter"></i></a>
+              <a href="#" class="footer-social-link" aria-label="YouTube"><i class="bi bi-youtube"></i></a>
+              <a href="#" class="footer-social-link" aria-label="GitHub"><i class="bi bi-github"></i></a>
+            </div>
           </div>
-          
-          
-          <div>
-              <div class="details fw-bold fs-5">
-                  SUPPORT
-              </div>
-          
-                  <span>Contact us</span>
-                  <span>FAQs</span>
-                  <span>Size Guide</span>
-                  <span>Shipping and Returns</span>
+
+          <div class="footer-col">
+            <h4 class="footer-heading"><i class="bi bi-headset"></i> Support</h4>
+            <ul class="footer-links">
+              <li><a href="#">Contact us</a></li>
+              <li><a href="#">FAQs</a></li>
+              <li><a href="#">Size Guide</a></li>
+              <li><a href="#">Shipping & Returns</a></li>
+            </ul>
           </div>
-          
-          
-          <div>
-              <div class="details fw-bold fs-5">
-                  SHOP
-              </div>
-                  <span>Mobile</span>
-                  <span>Smart Watches</span>
-                  <span>Televisiom</span>
-                  <span>Speakers</span>
-                  <span>Discounts</span>
+
+          <div class="footer-col">
+            <h4 class="footer-heading"><i class="bi bi-shop"></i> Shop</h4>
+            <ul class="footer-links">
+              <li><a href="src/Html/products.html">All Products</a></li>
+              <li><a href="src/Html/products.html">Smartphones</a></li>
+              <li><a href="src/Html/products.html">Smart Watches</a></li>
+              <li><a href="src/Html/products.html">Laptops</a></li>
+              <li><a href="src/Html/products.html">Speakers</a></li>
+            </ul>
           </div>
-          
-          
-          <div>
-              <div class="details fw-bold fs-5">
-                  COMPANY
-              </div>
-          
-                  <span>Our story</span>
-                  <span>Careers</span>
-                  <span>Terms and Conditions</span>
-                  <span>Privacy & Cookie policy</span>
+
+          <div class="footer-col">
+            <h4 class="footer-heading"><i class="bi bi-building"></i> Company</h4>
+            <ul class="footer-links">
+              <li><a href="#">Our story</a></li>
+              <li><a href="#">Careers</a></li>
+              <li><a href="#">Terms & Conditions</a></li>
+              <li><a href="#">Privacy & Cookie policy</a></li>
+            </ul>
           </div>
+        </div>
+        <div class="footer-bottom">
+          <p class="footer-copyright">&copy; TechVault. All rights reserved.</p>
+        </div>
+      </div>
     </footer>
     <!--  -->
     <!-- This is a separate section; it doesn't have any relation to the main code above -->

@@ -81,7 +81,8 @@ document.addEventListener("DOMContentLoaded",() => {
 
   // Profile dropdown functionality
   const profileDropdown = document.getElementById("profileDropdown");
-  
+  const profileContainer = profileIcon ? profileIcon.closest(".profileContainer") : null;
+
   if (profileIcon) {
     profileIcon.style.cursor = "pointer";
     
@@ -90,14 +91,16 @@ document.addEventListener("DOMContentLoaded",() => {
       e.stopPropagation();
       if (profileDropdown) {
         profileDropdown.classList.toggle("active");
+        if (profileContainer) profileContainer.classList.toggle("active", profileDropdown.classList.contains("active"));
       }
     });
   }
 
   // Close dropdown when clicking outside
   document.addEventListener("click", (e) => {
-    if (profileDropdown && !profileDropdown.contains(e.target) && !profileIcon.contains(e.target)) {
+    if (profileDropdown && !profileDropdown.contains(e.target) && !profileIcon?.contains(e.target)) {
       profileDropdown.classList.remove("active");
+      if (profileContainer) profileContainer.classList.remove("active");
     }
   });
 
@@ -114,6 +117,7 @@ document.addEventListener("DOMContentLoaded",() => {
         alert(`Profile Information:\n\nUsername: ${username}\nEmail: ${email}\n${provider ? `Login Provider: ${provider}` : ''}`);
       }
       if (profileDropdown) profileDropdown.classList.remove("active");
+      if (profileContainer) profileContainer.classList.remove("active");
     });
   }
 
@@ -133,8 +137,9 @@ document.addEventListener("DOMContentLoaded",() => {
       }
       
       window.location.href = settingsPath;
-      if (profileDropdown) profileDropdown.classList.remove("active");
-    });
+    if (profileDropdown) profileDropdown.classList.remove("active");
+    if (profileContainer) profileContainer.classList.remove("active");
+  });
   }
 
   if (registerLink) {
@@ -158,6 +163,7 @@ document.addEventListener("DOMContentLoaded",() => {
         }
       }
       if (profileDropdown) profileDropdown.classList.remove("active");
+      if (profileContainer) profileContainer.classList.remove("active");
       alert("Logged out successfully");
       // Reload page to update UI
       window.location.reload();
