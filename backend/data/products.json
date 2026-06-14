@@ -1,0 +1,204 @@
+{
+  "products": [
+    {
+      "id": "macbook-1",
+      "name": "Macbook Air 1",
+      "category": "laptop",
+      "price": 1399,
+      "originalPrice": 1999,
+      "discount": 30,
+      "image": "https://images.unsplash.com/photo-1541807084-5c52b6b3adef?w=800&h=600&fit=crop",
+      "detailImage": "https://images.unsplash.com/photo-1517336714731-489689fd1ca8?w=1200&h=600&fit=crop",
+      "detailPage": "product-detail.html",
+      "description": "Apple MacBook Air Laptop: Apple M1 chip, 13.3-inch/33.74 cm Retina Display, 8GB RAM, 256GB SSD Storage, Backlit Keyboard, FaceTime HD Camera, Touch ID. Works with iPhone/iPad; Space Grey",
+      "rating": 4.6,
+      "specs": {
+        "BRAND": "Apple",
+        "Model Name": "13-Inch MacBOOK Air(M4, 256)",
+        "Screen Size": "13 Inch",
+        "CPU Model": "Apple M4"
+      },
+      "inStock": true
+    },
+    {
+      "id": "iphone-15-pro",
+      "name": "Iphone 15 Pro",
+      "category": "phone",
+      "price": 549,
+      "originalPrice": 1299,
+      "discount": 57,
+      "image": "https://images.unsplash.com/photo-1592750475338-74b7b21085ab?w=800&h=600&fit=crop",
+      "detailImage": "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=1200&h=600&fit=crop",
+      "detailPage": "product-detail.html",
+      "description": "Apple iPhone 15 Pro (128GB) - Starlight A18 Bionic",
+      "rating": 4.6,
+      "specs": {
+        "BRAND": "Apple",
+        "Model Name": "Apple iPhone 15 Pro (128GB) - Starlight",
+        "Screen Size": "6.1 Inch",
+        "CPU Model": "Apple A18 Bionic"
+      },
+      "inStock": true
+    },
+    {
+      "id": "airwatch-1",
+      "name": "AirWatch 1",
+      "category": "watch",
+      "price": 319,
+      "originalPrice": 599,
+      "discount": 45,
+      "image": "https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=800&h=600&fit=crop",
+      "detailImage": "https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=1200&h=600&fit=crop",
+      "detailPage": "product-detail.html",
+      "description": "Apple Watch Series 10 [GPS 42 mm] Smartwatch with Jet Black Aluminium Case with Black Sport Band - M/L. Fitness Tracker, ECG App, Always-On Retina Display, Water Resistant",
+      "rating": 4.6,
+      "specs": {
+        "BRAND": "Apple",
+        "Model Name": "Apple Watch Series 10",
+        "Screen Size": "42 mm",
+        "CPU Model": "Apple S10"
+      },
+      "inStock": true
+    },
+    {
+      "id": "headphones-1",
+      "name": "Headphones",
+      "category": "audio",
+      "price": 69,
+      "originalPrice": 99,
+      "discount": 30,
+      "image": "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=800&h=600&fit=crop",
+      "detailImage": "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=1200&h=600&fit=crop",
+      "detailPage": "product-detail.html",
+      "description": "Premium quality headphones with noise cancellation and superior sound quality",
+      "rating": 4.5,
+      "specs": {
+        "BRAND": "Premium Audio",
+        "Model Name": "Wireless Headphones Pro",
+        "Connectivity": "Bluetooth 5.0",
+        "Battery Life": "30 hours"
+      },
+      "inStock": true
+    },
+    {
+      "id": "marshall-speaker",
+      "name": "Marshall speaker",
+      "category": "speaker",
+      "price": 199,
+      "originalPrice": 285.29,
+      "discount": 30,
+      "image": "https://images.unsplash.com/photo-1608043152269-423dbba4e7e1?w=800&h=600&fit=crop",
+      "detailImage": "https://images.unsplash.com/photo-1608043152269-423dbba4e7e1?w=1200&h=600&fit=crop",
+      "detailPage": "product-detail.html",
+      "description": "High-quality Bluetooth speaker with rich sound and classic design",
+      "rating": 4.7,
+      "specs": {
+        "BRAND": "Marshall",
+        "Model Name": "Acton III",
+        "Connectivity": "Bluetooth 5.0",
+        "Power": "60W"
+      },
+      "inStock": true
+    },
+    {
+      "id": "iphone-16",
+      "name": "iPhone 16",
+      "category": "phone",
+      "price": 799,
+      "originalPrice": 999,
+      "discount": 20,
+      "image": "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=800&h=600&fit=crop",
+      "detailImage": "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=1200&h=600&fit=crop",
+      "detailPage": "product-detail.html",
+      "description": "The newest iPhone with cutting-edge technology and advanced features",
+      "rating": 4.8,
+      "specs": {
+        "BRAND": "Apple",
+        "Model Name": "iPhone 16",
+        "Screen Size": "6.1 Inch",
+        "CPU Model": "Apple A18 Pro"
+      },
+      "inStock": true
+    },
+    {
+      "id": "macbook-pro",
+      "name": "Macbook Pro",
+      "category": "laptop",
+      "price": 2499,
+      "originalPrice": 2999,
+      "discount": 16,
+      "image": "https://images.unsplash.com/photo-1517336714731-489689fd1ca8?w=800&h=600&fit=crop",
+      "detailImage": "https://images.unsplash.com/photo-1517336714731-489689fd1ca8?w=1200&h=600&fit=crop",
+      "detailPage": "product-detail.html",
+      "description": "Professional-grade laptop for power users with M4 Pro chip",
+      "rating": 4.9,
+      "specs": {
+        "BRAND": "Apple",
+        "Model Name": "MacBook Pro 16-inch",
+        "Screen Size": "16 Inch",
+        "CPU Model": "Apple M4 Pro"
+      },
+      "inStock": true
+    },
+    {
+      "id": "smart-watch-pro",
+      "name": "Smart Watch Pro",
+      "category": "watch",
+      "price": 449,
+      "originalPrice": 599,
+      "discount": 25,
+      "image": "https://images.unsplash.com/photo-1544117519-31a4b719223d?w=800&h=600&fit=crop",
+      "detailImage": "https://images.unsplash.com/photo-1544117519-31a4b719223d?w=1200&h=600&fit=crop",
+      "detailPage": "product-detail.html",
+      "description": "Advanced smartwatch with health monitoring and fitness tracking",
+      "rating": 4.6,
+      "specs": {
+        "BRAND": "TechWatch",
+        "Model Name": "Smart Watch Pro",
+        "Screen Size": "1.9 Inch",
+        "Battery Life": "7 days"
+      },
+      "inStock": true
+    },
+    {
+      "id": "premium-headphones",
+      "name": "Premium Headphones",
+      "category": "audio",
+      "price": 149,
+      "originalPrice": 199,
+      "discount": 25,
+      "image": "https://images.unsplash.com/photo-1484704849700-f032a568e944?w=800&h=600&fit=crop",
+      "detailImage": "https://images.unsplash.com/photo-1484704849700-f032a568e944?w=1200&h=600&fit=crop",
+      "detailPage": "product-detail.html",
+      "description": "Wireless headphones with superior sound quality and comfort",
+      "rating": 4.7,
+      "specs": {
+        "BRAND": "AudioPro",
+        "Model Name": "Premium Wireless",
+        "Connectivity": "Bluetooth 5.2",
+        "Battery Life": "40 hours"
+      },
+      "inStock": true
+    },
+    {
+      "id": "wireless-speaker",
+      "name": "Wireless Speaker",
+      "category": "speaker",
+      "price": 129,
+      "originalPrice": 179,
+      "discount": 28,
+      "image": "https://images.unsplash.com/photo-1608043152269-423dbba4e7e1?w=800&h=600&fit=crop",
+      "detailImage": "https://images.unsplash.com/photo-1608043152269-423dbba4e7e1?w=1200&h=600&fit=crop",
+      "detailPage": "product-detail.html",
+      "description": "Portable wireless speaker with long battery life and waterproof design",
+      "rating": 4.5,
+      "specs": {
+        "BRAND": "SoundWave",
+        "Model Name": "Portable Pro",
+        "Connectivity": "Bluetooth 5.0",
+        "Battery Life": "20 hours"
+      },
+      "inStock": true
+    }
+  ]
+}
