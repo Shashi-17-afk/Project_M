@@ -19,7 +19,7 @@ export default function Orders() {
   useEffect(() => {
     if (!user) { setLoading(false); return; }
     getOrders()
-      .then(({ data }) => setOrders(data))
+      .then(({ data }) => setOrders(Array.isArray(data) ? data : []))
       .catch(() => setOrders([]))
       .finally(() => setLoading(false));
   }, [user]);

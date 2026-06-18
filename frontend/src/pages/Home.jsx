@@ -35,7 +35,7 @@ export default function Home() {
 
   useEffect(() => {
     getProducts()
-      .then(({ data }) => setProducts(data.slice(0, 4)))
+      .then(({ data }) => setProducts(Array.isArray(data) ? data.slice(0, 4) : []))
       .catch(() => setProducts([]))
       .finally(() => setLoading(false));
   }, []);

@@ -14,7 +14,7 @@ export function CartProvider({ children }) {
     setCartLoading(true);
     try {
       const { data } = await getCart();
-      setCart(data);
+      setCart(Array.isArray(data) ? data : []);
     } catch {
       setCart([]);
     } finally {

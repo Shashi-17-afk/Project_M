@@ -28,7 +28,7 @@ export default function Products() {
     if (category !== 'all') params.category = category;
     if (search) params.search = search;
     getProducts(params)
-      .then(({ data }) => setProducts(data))
+      .then(({ data }) => setProducts(Array.isArray(data) ? data : []))
       .catch(() => setError('Failed to load products. Please try again.'))
       .finally(() => setLoading(false));
   }, [category, search]);
