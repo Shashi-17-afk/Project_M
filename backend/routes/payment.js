@@ -5,6 +5,11 @@ const auth = require('../middleware/auth');
 const store = require('../db/store');
 const { v4: uuidv4 } = require('uuid');
 
+// Validate keys at startup
+if (!process.env.RAZORPAY_KEY_ID || !process.env.RAZORPAY_KEY_SECRET) {
+  console.error('[Razorpay] WARNING: RAZORPAY_KEY_ID or RAZORPAY_KEY_SECRET is not set! Payment will not work.');
+}
+
 // Instantiate Razorpay client
 const razorpay = new Razorpay({
   key_id: process.env.RAZORPAY_KEY_ID,
@@ -13,6 +18,10 @@ const razorpay = new Razorpay({
 
 // POST /api/create-order
 router.post('/create-order', auth, async (req, res) => {
+  if (!process.env.RAZORPAY_KEY_ID || !process.env.RAZORPAY_KEY_SECRET) {
+    return res.status(503).json({ message: 'Razorpay is not configured on the server. Please contact support.' });
+  }
+
   try {
     const { amount, currency, receipt } = req.body;
 
@@ -32,7 +41,7 @@ router.post('/create-order', auth, async (req, res) => {
     };
 
     const order = await razorpay.orders.create(options);
-    
+
     res.json({
       order_id: order.id,
       amount: order.amount,
@@ -40,12 +49,17 @@ router.post('/create-order', auth, async (req, res) => {
     });
   } catch (err) {
     console.error('Error creating Razorpay order:', err);
-    res.status(500).json({ message: 'Error creating payment order', error: err.message });
+    const errMsg = err?.error?.description || err?.message || 'Unknown error';
+    res.status(500).json({ message: `Error creating payment order: ${errMsg}` });
   }
 });
 
 // POST /api/verify-payment
 router.post('/verify-payment', auth, (req, res) => {
+  if (!process.env.RAZORPAY_KEY_SECRET) {
+    return res.status(503).json({ message: 'Razorpay is not configured on the server. Please contact support.' });
+  }
+
   try {
     const { razorpay_order_id, razorpay_payment_id, razorpay_signature, orderData } = req.body;
 
@@ -66,10 +80,11 @@ router.post('/verify-payment', auth, (req, res) => {
       .digest('hex');
 
     if (razorpay_signature !== expectedSign) {
+      console.error('[Razorpay] Signature mismatch. Expected:', expectedSign, 'Got:', razorpay_signature);
       return res.status(400).json({ message: 'Payment verification failed: Signature mismatch' });
     }
 
-    // Create the order structure in backend store.js
+    // Save order
     const order = {
       id: `ORD-${uuidv4().slice(0, 8).toUpperCase()}`,
       items: orderData.items,
@@ -87,7 +102,7 @@ router.post('/verify-payment', auth, (req, res) => {
     }
     store.orders[req.user.userId].unshift(order);
 
-    // Clear cart after placing order
+    // Clear cart after order
     store.carts[req.user.userId] = [];
 
     res.json({ success: true, order });

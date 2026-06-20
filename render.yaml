@@ -13,3 +13,7 @@ services:
         generateValue: true
       - key: FRONTEND_URL
         value: https://frontend-shashi-ss-projects.vercel.app
+      - key: RAZORPAY_KEY_ID
+        value: rzp_test_T3q0c8BnBi7MVt
+      - key: RAZORPAY_KEY_SECRET
+        value: gGbzSmCLZB3Zb44fgryLMU3I
