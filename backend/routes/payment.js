@@ -16,6 +16,15 @@ const razorpay = new Razorpay({
   key_secret: process.env.RAZORPAY_KEY_SECRET
 });
 
+// GET /api/razorpay-key — returns the public key_id so frontend always uses the same key as the backend
+router.get('/razorpay-key', (req, res) => {
+  const keyId = process.env.RAZORPAY_KEY_ID;
+  if (!keyId) {
+    return res.status(503).json({ message: 'Razorpay is not configured on the server.' });
+  }
+  res.json({ key_id: keyId });
+});
+
 // POST /api/create-order
 router.post('/create-order', auth, async (req, res) => {
   if (!process.env.RAZORPAY_KEY_ID || !process.env.RAZORPAY_KEY_SECRET) {

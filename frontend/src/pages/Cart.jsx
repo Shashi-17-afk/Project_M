@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import { useCart } from '../context/CartContext';
-import { placeOrder, createRazorpayOrder, verifyRazorpayPayment } from '../api';
+import { placeOrder, createRazorpayOrder, verifyRazorpayPayment, getRazorpayKey } from '../api';
 
 const SHIPPING_THRESHOLD = 100;
 const SHIPPING_COST = 9.99;
@@ -64,10 +64,10 @@ export default function Cart() {
           receipt: `receipt_${Date.now()}`
         });
 
-        // RAZORPAY_KEY_ID is a PUBLIC key — safe to use in frontend.
-        // We use the env var first; fall back to the literal key if Vite
-        // did not hot-reload the .env file after it was created.
-        const razorpayKey = import.meta.env.VITE_RAZORPAY_KEY_ID || 'rzp_test_T3q0c8BnBi7MVt';
+        // Fetch the Razorpay key_id from the backend so it always matches
+        // the key the backend used to create the order — no env var mismatch possible.
+        const { data: keyData } = await getRazorpayKey();
+        const razorpayKey = keyData.key_id;
 
         const options = {
           key: razorpayKey,

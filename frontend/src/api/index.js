@@ -46,5 +46,6 @@ export const updateSettings = (data) => api.put('/settings', data);
 
 export const createRazorpayOrder = (data) => api.post('/create-order', data);
 export const verifyRazorpayPayment = (data) => api.post('/verify-payment', data);
+export const getRazorpayKey = () => api.get('/razorpay-key');
 
 export default api;
