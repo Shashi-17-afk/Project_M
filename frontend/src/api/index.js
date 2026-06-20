@@ -44,4 +44,7 @@ export const placeOrder = (data) => api.post('/orders', data);
 export const getSettings = () => api.get('/settings');
 export const updateSettings = (data) => api.put('/settings', data);
 
+export const createRazorpayOrder = (data) => api.post('/create-order', data);
+export const verifyRazorpayPayment = (data) => api.post('/verify-payment', data);
+
 export default api;

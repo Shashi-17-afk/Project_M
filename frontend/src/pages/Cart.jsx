@@ -2,14 +2,15 @@ import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import { useCart } from '../context/CartContext';
-import { placeOrder } from '../api';
+import { placeOrder, createRazorpayOrder, verifyRazorpayPayment } from '../api';
 
 const SHIPPING_THRESHOLD = 100;
 const SHIPPING_COST = 9.99;
 const TAX_RATE = 0.08;
 
 const PAYMENT_METHODS = [
-  { id: 'credit-card', label: 'Credit / Debit Card', icon: 'bi-credit-card-2-front' },
+  { id: 'razorpay', label: 'Razorpay (Card/UPI/NetBanking)', icon: 'bi-credit-card' },
+  { id: 'credit-card', label: 'Credit / Debit Card (Stripe Mock)', icon: 'bi-credit-card-2-front' },
   { id: 'paypal', label: 'PayPal', icon: 'bi-paypal' },
   { id: 'cod', label: 'Cash on Delivery', icon: 'bi-cash-stack' },
 ];
@@ -19,7 +20,7 @@ export default function Cart() {
   const { cart, cartLoading, cartTotal, updateQuantity, removeItem, clearCart } = useCart();
   const navigate = useNavigate();
 
-  const [payMethod, setPayMethod] = useState('credit-card');
+  const [payMethod, setPayMethod] = useState('razorpay');
   const [showModal, setShowModal] = useState(false);
   const [showSuccess, setShowSuccess] = useState(false);
   const [lastOrder, setLastOrder] = useState(null);
@@ -34,25 +35,117 @@ export default function Cart() {
   const handleOrder = async (e) => {
     e.preventDefault();
     setProcessing(true);
-    try {
-      const items = cart.map(i => ({
-        productId: i.productId,
-        name: i.product?.name,
-        price: i.product?.price,
-        quantity: i.quantity,
-        image: i.product?.image,
-      }));
-      const { data } = await placeOrder({
-        items, total, paymentMethod: payMethod,
-        shippingAddress: { name: form.name, address: form.address },
-      });
-      setLastOrder(data);
-      setShowModal(false);
-      setShowSuccess(true);
-    } catch {
-      alert('Failed to place order. Please try again.');
-    } finally {
-      setProcessing(false);
+
+    const items = cart.map(i => ({
+      productId: i.productId,
+      name: i.product?.name,
+      price: i.product?.price,
+      quantity: i.quantity,
+      image: i.product?.image,
+    }));
+    const shippingAddress = { name: form.name, address: form.address };
+
+    if (payMethod === 'razorpay') {
+      // Guard: ensure the Razorpay script loaded successfully
+      if (!window.Razorpay) {
+        alert('Razorpay SDK failed to load. Please check your internet connection and refresh the page.');
+        setProcessing(false);
+        return;
+      }
+
+      try {
+        // Convert total (treated as INR for Razorpay test mode) to paise.
+        // Minimum is 100 paise (₹1). We use Math.max to guard against tiny amounts.
+        const amountInPaise = Math.max(100, Math.round(total * 100));
+
+        const { data: orderData } = await createRazorpayOrder({
+          amount: amountInPaise,
+          currency: 'INR',
+          receipt: `receipt_${Date.now()}`
+        });
+
+        // RAZORPAY_KEY_ID is a PUBLIC key — safe to use in frontend.
+        // We use the env var first; fall back to the literal key if Vite
+        // did not hot-reload the .env file after it was created.
+        const razorpayKey = import.meta.env.VITE_RAZORPAY_KEY_ID || 'rzp_test_T3q0c8BnBi7MVt';
+
+        const options = {
+          key: razorpayKey,
+          amount: orderData.amount,
+          currency: orderData.currency,
+          name: 'TechVault',
+          description: 'E-commerce Purchase',
+          order_id: orderData.order_id,
+          handler: async function (response) {
+            setProcessing(true);
+            try {
+              const verifyRes = await verifyRazorpayPayment({
+                razorpay_order_id: response.razorpay_order_id,
+                razorpay_payment_id: response.razorpay_payment_id,
+                razorpay_signature: response.razorpay_signature,
+                orderData: {
+                  items,
+                  total,
+                  shippingAddress
+                }
+              });
+
+              if (verifyRes.data && verifyRes.data.success) {
+                setLastOrder(verifyRes.data.order);
+                setShowModal(false);
+                setShowSuccess(true);
+                clearCart();
+              } else {
+                alert('Payment verification failed. Please contact support.');
+              }
+            } catch (err) {
+              console.error('Error during signature verification:', err);
+              alert(err.response?.data?.message || 'Payment verification failed. Please contact support.');
+            } finally {
+              setProcessing(false);
+            }
+          },
+          prefill: {
+            name: form.name || user.username || '',
+            email: user.email || '',
+          },
+          theme: {
+            color: '#4f46e5'
+          },
+          modal: {
+            ondismiss: function () {
+              setProcessing(false);
+            }
+          }
+        };
+
+        const rzp = new window.Razorpay(options);
+        rzp.on('payment.failed', function (response) {
+          console.error('Razorpay payment.failed event:', response.error);
+          alert(`Payment failed: ${response.error.description || 'Unknown error'}. Please try again.`);
+          setProcessing(false);
+        });
+
+        rzp.open();
+      } catch (err) {
+        console.error('Razorpay initialization failed:', err);
+        alert(err.response?.data?.message || 'Failed to initialize payment. Please try again.');
+        setProcessing(false);
+      }
+    } else {
+      try {
+        const { data } = await placeOrder({
+          items, total, paymentMethod: payMethod,
+          shippingAddress,
+        });
+        setLastOrder(data);
+        setShowModal(false);
+        setShowSuccess(true);
+      } catch {
+        alert('Failed to place order. Please try again.');
+      } finally {
+        setProcessing(false);
+      }
     }
   };
 
@@ -313,6 +406,13 @@ export default function Cart() {
                       </div>
                     </div>
                   </>
+                )}
+
+                {payMethod === 'razorpay' && (
+                  <div className="pay-info-block">
+                    <i className="bi bi-credit-card" style={{ color: '#4f46e5' }}></i>
+                    <p>Secure payment via Razorpay. You can pay using Cards, UPI, NetBanking, or Wallets.</p>
+                  </div>
                 )}
 
                 {payMethod === 'paypal' && (
